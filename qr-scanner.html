@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>QR Code Scanner</h1>
+  <video id="video" width="300" height="200"></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <p>Scanned result: <span id="result"></span></p>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const result = document.getElementById('result');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(err => console.error(err));
+
+    // ここでQRコードを読み取るライブラリ（ZXingなど）を使う
+    // 簡単な例（実際はライブラリを使う）:
+    video.addEventListener('loadedmetadata', () => {
+      setInterval(() => {
+        result.textContent = 'Scanning QR code...';
+        // 実際のQRコード解析はライブラリ（DynamsoftやZXing）を使う
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
