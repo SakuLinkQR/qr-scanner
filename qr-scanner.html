@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .btn-home {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 20px;
+      background-color: #ff4081;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+    }
+  </style>
+</head>
 <body>
-  <h1>QR Code Scanner</h1>
+  <h1>📷 QR Code Scanner</h1>
   <video id="video" width="300" height="200"></video>
   <canvas id="canvas" style="display:none;"></canvas>
   <p>Scanned result: <span id="result"></span></p>
+
+  <!-- 🏠 Back to Home ボタン -->
+  <a href="home.html" class="btn-home">← 🏠 Back to Home</a>
 
   <script>
     const video = document.getElementById('video');
@@ -18,12 +45,10 @@
       })
       .catch(err => console.error(err));
 
-    // ここでQRコードを読み取るライブラリ（ZXingなど）を使う
-    // 簡単な例（実際はライブラリを使う）:
     video.addEventListener('loadedmetadata', () => {
       setInterval(() => {
         result.textContent = 'Scanning QR code...';
-        // 実際のQRコード解析はライブラリ（DynamsoftやZXing）を使う
+        // QRコード解析処理（ライブラリを使用）をここに入れる
       }, 1000);
     });
   </script>
